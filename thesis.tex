@@ -5,6 +5,7 @@
 \usepackage{listings, jlisting}
 \usepackage{cite}
 \usepackage{url}
+\usepackage{subcaption}
 
 % ソースコードを挿入するための設定
 \lstset{
@@ -57,7 +58,7 @@ captionpos=t
     本研究では、では、分野Aにおける手法Xの精度改善を行う。以下に本論文の構成を示す。第\ref{chap:introduction}章では、分野Aにおける手法の概観を紹介し、手法Xが広く用いられていることを示した。第\ref{chap:method}章では、本研究で用いる手法X、及びその改善手法であるX'について説明する。第\ref{chap:results}章では、本研究で提案した手法X'と、もととなった手法Xとの精度の比較を行う。第\ref{chap:summary}章では本研究で得られた知見を総括し、結論と今後の展望について述べる。
 \end{quotation}
 
-\chapter{原理} \label{chap:method}
+\chapter{原理} \label{chap:principle}
 
 \section{売買価格の決定方法}
 \subsection{売買契約の優先順位}
@@ -68,12 +69,35 @@ captionpos=t
 
 \subsection{板寄せとザラ場方式}
 売買価格の決定方法には，始値や終値を定める場合に用いられる板寄せと，始値決定後の値段の決定に用いられるザラ場方式がある\cite{shokengaimuin}．
-板寄せは
+
+板寄せは図\ref{fig:itayose}で示すように，売注文も買い注文も成行注文を優先して対当させる．
+次に残りの成行注文と，指値注文を価格優先の原則に従って対当させていく．
+最後に同じ呼値同士を時間優先の原則に従って対当させることで，図\ref{fig:continuous}のようになり，始値は最後に対当させた価格である100となる．
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{fig/itayose.pdf}
+        \caption{}
+        \label{fig:itayose}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.335\linewidth}
+        \includegraphics[width=\linewidth]{fig/continuous.pdf}
+        \caption{}
+        \label{fig:continuous}
+    \end{subfigure}
+    \caption{始値直前の板の状況(a)，始値直後の板の状況(b)}
+    \label{fig:opening}
+\end{figure}
 
 
 
 
 
+
+
+\section{手法} \label{chap:method}
 
 
 
