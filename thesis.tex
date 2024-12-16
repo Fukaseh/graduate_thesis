@@ -57,7 +57,32 @@ captionpos=t
     本研究では、では、分野Aにおける手法Xの精度改善を行う。以下に本論文の構成を示す。第\ref{chap:introduction}章では、分野Aにおける手法の概観を紹介し、手法Xが広く用いられていることを示した。第\ref{chap:method}章では、本研究で用いる手法X、及びその改善手法であるX'について説明する。第\ref{chap:results}章では、本研究で提案した手法X'と、もととなった手法Xとの精度の比較を行う。第\ref{chap:summary}章では本研究で得られた知見を総括し、結論と今後の展望について述べる。
 \end{quotation}
 
-\chapter{手法} \label{chap:method}
+\chapter{原理} \label{chap:method}
+
+\section{売買価格の決定方法}
+\subsection{売買契約の優先順位}
+東証の取引所市場において売買立会による取引は，価格優先の原則と時間優先の原則に従い，競争売買によって行われる\cite{shokengaimuin}．
+価格優先の原則とは，売呼値は低い値段の注文を，買呼値は高い値段の注文を優先して成立させるという取引上のルールである．
+一方で時間優先の原則では，注文した時間の早かった注文が優先して成立されるが，時間優先の原則より価格優先の原則を先に適用させるため，時間優先の原則は同一値段の呼値に対してのみ適用される．
+また，時間や価格に関係なく成行呼値は指値による呼値より優先される．
+
+\subsection{板寄せとザラ場方式}
+売買価格の決定方法には，始値や終値を定める場合に用いられる板寄せと，始値決定後の値段の決定に用いられるザラ場方式がある\cite{shokengaimuin}．
+板寄せは
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{引用の仕方}
 
@@ -122,17 +147,19 @@ GitHubのサイトなど、やむを得ずURLを引用する場合には、bibit
 \begin{lstlisting}[language={[LaTeX]TeX}]
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=10cm]{fig/temperature.pdf}
+    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
+    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
     \caption{温度の時間発展。}
     \label{fig:temperature}
 \end{figure}
+
 \end{lstlisting}
 
 とすると、以下のような図が得られる。
-
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=10cm]{fig/temperature.pdf}
+    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
+    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
     \caption{温度の時間発展。}
     \label{fig:temperature}
 \end{figure}
@@ -158,9 +185,6 @@ gnuplot temperature.plt
 考察は、「研究の背景」及び「目的」において提起した問題に正しく答えるようにする。得られた結果は満足すべきものだったか？不満があるならその理由はなにか？解決できそうなのか？また、「大きい理由」にも言及する。本研究によりどのような課題が見つかったかを書き、この分野における「研究の流れ」においてのような位置づけにあるかを説明した上で、今後、どのような発展の方向があるかについて書く。
 
 \chapter*{謝辞}
-
-謝辞は卒業論文を執筆するにあたって、お世話になった人への感謝の気持ちを書く。まず指導教員、次にお世話になった先生、研究室の助教や研究員、その他研究の相談に載ってもらったり、アドバイスをもらった人への感謝を書く。次に研究室の仲間に一言ずつ。最後に家族、特に両親への感謝で締めると良い。
-
 はじめに指導教員である渡辺宙志先生にお礼申し上げます．
 金融という物理情報工学科に関連のない分野にもかかわらず，研究の方向性や方法など様々な助言を送っていただいたことや，プログラミングやソフトウェアの知識に疎い私に対して丁寧に指導していただいたことなど，これらの貴重なアドバイスや指導が私の研究や成長に大いに役に立ちました．
 
