@@ -5,7 +5,6 @@
 \usepackage{listings, jlisting}
 \usepackage{cite}
 \usepackage{url}
-\usepackage{subcaption}
 
 % ソースコードを挿入するための設定
 \lstset{
@@ -60,7 +59,7 @@ captionpos=t
 
 \chapter{原理} \label{chap:principle}
 
-\section{売買価格の決定方法}
+\section{市場の仕組み}
 \subsection{売買契約の優先順位}
 東証の取引所市場において売買立会による取引は，価格優先の原則と時間優先の原則に従い，競争売買によって行われる\cite{shokengaimuin}．
 価格優先の原則とは，売呼値は低い値段の注文を，買呼値は高い値段の注文を優先して成立させるという取引上のルールである．
@@ -70,49 +69,73 @@ captionpos=t
 \subsection{板寄せとザラ場方式}
 売買価格の決定方法には，始値や終値を定める場合に用いられる板寄せと，始値決定後の値段の決定に用いられるザラ場方式がある\cite{shokengaimuin}．
 
-板寄せは図\ref{fig:itayose}で示すように，売注文も買い注文も成行注文を優先して対当させる．
+板寄せは図\ref{fig:opening}~(a)で示すように，売注文も買い注文も成行注文を優先して対当させる．
 次に残りの成行注文と，指値注文を価格優先の原則に従って対当させていく．
-最後に同じ呼値同士を時間優先の原則に従って対当させることで，図\ref{fig:continuous}のようになり，始値は最後に対当させた価格である100となる．
+最後に同じ呼値同士を時間優先の原則に従って対当させることで，図\ref{fig:opening}~(b)のようになり，始値は最後に対当させた価格である100となる．
+また，ザラ場方式は図\ref{fig:opening}~(b)の状態から新たな注文を表に追加し，同様の優先順位に従って対当させていく．そのため，ザラ場での約定では，約定価格は必ずしも単一とは限らない．
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.49\linewidth}
-        \includegraphics[width=\linewidth]{fig/itayose.pdf}
-        \caption{}
-        \label{fig:itayose}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.335\linewidth}
-        \includegraphics[width=\linewidth]{fig/continuous.pdf}
-        \caption{}
-        \label{fig:continuous}
-    \end{subfigure}
-    \caption{始値直前の板の状況(a)，始値直後の板の状況(b)}
+    \includegraphics[width=0.49\linewidth]{fig/itayose.pdf}
+    \hfil
+    \includegraphics[width=0.335\linewidth]{fig/continuous.pdf}
+    \caption{(a) 始値直前の板の状況．(b)始値直後の板の状況．}
     \label{fig:opening}
 \end{figure}
 
 \section{Zero-intelligence trader}
 ?ZItraderの説明を入れる
 
-\subsection{Gode and Sunder}
+\subsection{Gode and Sunderモデル}
 ZIトレーダーの1つにGodeとSunderによって提案されたモデルが存在する\cite{Gode_and_Sunder}．
 以降このモデルをGode and Sunderモデルとする．
 Gode and Sunderモデルは，市場規律による予算制約によって行動が制限されること\cite{market_displine}を用いて，ZIトレーダーに予算による制限を設けることで取引価格が均衡価格近傍に収束することや余剰をほぼ最大にするといった市場の特性を再現している．
 
 はじめに各トレーダーには償却価値とコストが与えられ，$i$番目のトレーダーの償却価値を$v_i$,コストを$c_i$とする．
-次に，各トレーダーは確率1/2で売注文を，確率1/2で買注文を出す．
-このとき，注文数は1株とし，注文価格は売注文の場合は$c_i$～$V_{max}$で，買注文の場合は1～$v_i$でランダムに注文する．
+次に，ランダムなトレーダーを選び確率1/2で売注文を，確率1/2で買注文を出す．
+このとき，注文数は1株とし，呼値は売注文の場合は$[c_i, V_{max}]$で，買注文の場合は$[1, v_i]$でランダムとする．
 ただし，$V_{max}$は一株当たりの注文価格の上限とする．
-需給曲線と取引書かk
+そしてこれまでの注文の記録と比較して，対当できるなら約定を成立させ，対当はできないが記録の中で最も取引が成立しやすい(売注文の場合は安く，買注文の場合は高い)価格である場合は新たにその価格を記録する．
+以上の操作を十分に時間が経過するまで繰り返すと，約定価格は図\ref{fig:gode_sunder_trade}の黒線のように変化する．
+全トレーダーの呼値を，売注文の場合は昇順に，買注文の場合は昇順に並べることで図\ref{fig:gode_sunder_trade}の赤線と緑線のような需給曲線を引くことができ，約定価格が最終的に均衡価格近傍に収束している．
+また，余剰についても需給曲線から求められる最大値の95 \%程度になっている．
 
+予算制約を設けない完全にランダムなトレーダーと人間にも同様の実験を行ったところ完全にランダムなトレーダーのみ取引価格が均衡価格近傍に収束せず，余剰も9割を越えなかった．
+そのため，Gode and Sunderモデルによってこれらの市場の特性が市場規律による予算制約によるものだと明らかにされている．
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=10cm]{fig/gode_sunder_trade.pdf}
     \caption{Gode and Sunderモデルの需給曲線と取引価格．}
-    \label{gode_sunder_trade}
+    \label{fig:gode_sunder_trade}
 \end{figure}
 
 
+\subsection{Genoaモデル}
+Gode and Sunderモデルの他に，トレーダーの注文方法に制限を設け，更にクラスターを形成させることによって，ファット・テールとボラティリティ・クラスタリングを再現したモデルがある\cite{Genoa}．
+以降，このモデルをGenoaモデルと呼ぶ．
+
+前提として，トレーダーは限られた資産を用いて単一株を取引する．
+また，トレーダーの人数を$N$人として，ステップ$h$における$i$番目のトレーダ－の全資産を$A_i(h)$，現金資産を$C_i(h)$，株価を$p(h)$とする．このとき，ステップ$h + 1$におけるトレーダー$i$の売呼値$s_i(h + 1)$を式(\ref{eq:Genoa_sell})，買呼値$b_i(h + 1)$を式(\ref{eq:Genoa_buy})で決定する．
+\begin{equation}
+    s_i(h + 1) = \frac{p(h)}{\mathcal{N}(\mu, \sigma_i)} \label{eq:Genoa_sell}
+\end{equation}
+\begin{equation}
+    b_i(h + 1) = p(h) \mathcal{N}(\mu, \sigma_i) \label{eq:Genoa_buy}
+\end{equation}
+ただし，$\mathcal{N}(\mu, \sigma_i)$は平均$\mu = 1.01$，標準偏差$\sigma_i$のガウス分布から生成される乱数で，$\sigma_i$は定数$k = 3.5$,時間窓数$T_i = 20$，過去$T_i$間におけるボラティリティ$\sigma(T_i)$を用いて式(\ref{eq:Genoa_sigma_i})で定義される．
+\begin{equation}
+    \sigma_i = k \sigma(T_i) \label{eq:Genoa_sigma_i}
+\end{equation}
+
+また，ステップ$h + 1$におけるトレーダー$i$の売注文の株数$a_i^s$を式(\ref{eq:Genoa_a_i^s})，買注文の株数$b_i^s$を式(\ref{eq:Genoa_a_i^b})に従って決定する．ただし，$r_i$は$[0, 1]$の一様乱数である．
+\begin{equation}
+    a_i^s = \lfloor r_i A_i(h) \rfloor \label{eq:Genoa_a_i^s}
+\end{equation}
+\begin{equation}
+    a_i^b = \left\lfloor \frac{r_i C_i(h)}{b_i} \right\rfloor \label{eq:Genoa_a_i^b}
+\end{equation}
+
+Gode and Sunderモデルと同様に全トレーダーの呼値を，売注文の場合は昇順に，買注文の場合は昇順に並べることで需給曲線が得られる．均衡価格$p*(h)$は需要曲線と供給曲線の交点として，板寄せと同様の取引方法を用いて，均衡価格$p*(h)$より安い売呼値と高い買呼値を全て価格$p*(h)$で売買を成立させる．ただし，同じ呼値同士は時間優先の原則ではなく，完全にランダムな優先順位で対当させる．
 
 
 
@@ -121,7 +144,9 @@ Gode and Sunderモデルは，市場規律による予算制約によって行�
 
 
 
-\section{手法} \label{chap:method}
+
+
+\chapter{手法} \label{chap:method}
 
 
 
