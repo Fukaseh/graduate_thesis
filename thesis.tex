@@ -253,7 +253,27 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
     r_i(h) = \frac{A_i(h) - A_i(h - 1)}{A_i(h - 1)} \label{eq:asset_return}
 \end{equation}
 
+\section{Genoaモデルの導入}
+Gode and Sunderモデルの資産変動の分布がファット・テールを持つようにするために，Genoaモデルを参考に注文数や取引方法に変更を加える．
 
+\subsection{Gode and Sunderモデルから変更しない点}
+Gode and Sunderモデル同様，各トレーダーには償却価値$v$とコスト$c$が与えた．ただし，償却価値とコストは各期間ごとに与えられ，呼値の最大値を$V_{max}$とすると，期間$h$のトレーダー$i$の償却価値$v_i(h)$とコスト$c_i(h)$は式(\ref{eq:model_value}),(\ref{eq:model_cost})によって求められる．ここで，$r_i$，$r_i'$は$[0, 1]$の一様乱数とする．
+\begin{equation}
+    v_i(h) = \lfloor r_i V_{max} \rfloor \label{eq:model_value}
+\end{equation}
+\begin{equation}
+    c_i(h) = \lfloor r_i' V_{max} \rfloor \label{eq:model_cost}
+\end{equation}
+トレーダー$i$の期間$h$における売呼値$s_i(h)$は式(\ref{eq:model_sell})で，買呼値$b_i(h)$は式(\ref{eq:model_buy})で決定した．ただし，$r_i$，$r_i'$は$[0, 1]$は式(\ref{eq:model_value}),(\ref{eq:model_cost})とは異なる値とする．
+\begin{equation}
+    s_i(h) = \lceil c_i + r_i' (V_{max} - c_i) \rceil \label{eq:model_sell}
+\end{equation}
+\begin{equation}
+    b_i(h) = \lfloor v_i - r_i (v_i - 1) \rfloor \label{eq:model_buy}
+\end{equation}
+
+\subsection{Gode and Sunderモデルからの変更点}
+トレーダーが複数株注文できるようにするために，
 
 
 \chapter{結果} \label{chap:results}
