@@ -6,6 +6,8 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{amssymb}
+\usepackage{amsmath}
+
 
 
 % ソースコードを挿入するための設定
@@ -100,13 +102,32 @@ captionpos=t
     dS_t = \mu S_t dt + \sigma S_t dW_t \label{eq:geoBrow_equation}
 \end{equation}
 
-の解$S_t$は式(\ref{eq:geometric_Brown})で表され，この確率過程$S_t$を幾何ブラウン運動という．
+の解$S_t$は式(\ref{eq:geometric_Brown})で表され，この確率過程$S_t$を幾何ブラウン運動，$\sigma$をボラティリティという\cite{Stochastic_Calculus}．
 \begin{equation}
     S_t = S_0 \exp{\left(\sigma W_t + \left( \mu - \frac{1}{2}\sigma^2 \right)t\right)} \label{eq:geometric_Brown}
 \end{equation}
 
 \subsection{ボラティリティ・クラスタリング}
+? ボラティリティクラスタリングの説明を入れる
 
+\subsection{ファット・テール}
+図()で示すような，正規分布に比べて裾が厚く，べき乗測に従っている分布に対してファット・テールを持つという表現が用いられる(?参考文献を探す)．
+(?ファットテールの図を挿入)
+
+べき分布の確率密度関数はある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
+\begin{equation}
+    f(x) = \frac{ab^a}{x^{a + 1}} \qquad (x > b) \label{eq:power_pdf}
+\end{equation}
+よって相補累積分布関数$P(X \geq x)$は
+\begin{equation}
+    \begin{aligned}
+        P(X \geq x) & = 1 - P(X \leq x)                     \\
+                    & = 1 - \int_{b}^{x} f(t) \mathrm{d}t   \\
+                    & = \frac{b^a}{x^a} \label{eq:survival}
+    \end{aligned}
+\end{equation}
+となることより，べき分布の相補累積分布関数は両対数グラフで直線となる．そのため，ファット・テールを持つ分布の相補累積分布関数は図()のように両対数グラフで一部直線を持つ．
+(?ファット・テールの相補累積分布関数の図を入れる)
 
 \section{Zero-intelligence trader}
 ?ZItraderの説明を入れる
