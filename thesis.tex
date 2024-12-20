@@ -5,6 +5,8 @@
 \usepackage{listings, jlisting}
 \usepackage{cite}
 \usepackage{url}
+\usepackage{amssymb}
+
 
 % ソースコードを挿入するための設定
 \lstset{
@@ -82,6 +84,29 @@ captionpos=t
     \caption{(a) 始値直前の板の状況．(b)始値直後の板の状況．}
     \label{fig:opening}
 \end{figure}
+
+\section{市場の性質}
+\subsection{確率過程}
+確率過程$W = (W_t)_{t \geq 0}$が次の性質1～4を満たすとき，確率過程$W$を標準ブラウン運動，あるいはウィナー過程という\cite{stochastic_integration}．
+\begin{enumerate}
+    \item $W_0 = 0  a.s.$
+    \item 各$0 \leq s \leq t$に対して，$W_t - W_s \sim \mathcal{N}(0, t - s)$
+    \item 独立定常増分糧である.
+    \item 確率1で連続なパスを持つ．
+\end{enumerate}
+
+また，ある定数$\mu \in \mathbb{R}, \sigma > 0$とブラウン運動$W_t$を用いて表される確率微分方程式
+\begin{equation}
+    dS_t = \mu S_t dt + \sigma S_t dW_t \label{eq:geoBrow_equation}
+\end{equation}
+
+の解$S_t$は式(\ref{eq:geometric_Brown})で表され，この確率過程$S_t$を幾何ブラウン運動という．
+\begin{equation}
+    S_t = S_0 \exp{\left(\sigma W_t + \left( \mu - \frac{1}{2}\sigma^2 \right)t\right)} \label{eq:geometric_Brown}
+\end{equation}
+
+\subsection{ボラティリティ・クラスタリング}
+
 
 \section{Zero-intelligence trader}
 ?ZItraderの説明を入れる
