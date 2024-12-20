@@ -272,8 +272,17 @@ Gode and Sunderモデル同様，各トレーダーには償却価値$v$とコ�
     b_i(h) = \lfloor v_i - r_i (v_i - 1) \rfloor \label{eq:model_buy}
 \end{equation}
 
+また，トレーダーは確率1/2で，売注文を確率1/2で買注文を出す．
+
 \subsection{Gode and Sunderモデルからの変更点}
-トレーダーが複数株注文できるようにするために，
+トレーダーが複数株注文できるようにするために，取引をGenoaモデルと同様の手順で
+(?いい感じの文章が浮かばないので後で取引方法をGenoaと同じにしたことを書く，p(h)の説明も)
+
+また，Genoaモデルの式(\ref{eq:Genoa_a_i^s})，(\ref{eq:Genoa_a_i^b})を参考に，複数株注文するように変更をおこなった．トレーダーに保有株数の項目を追加し，期間$h$におけるトレーダー$i$の総資産$A_i(h)$を，保有株数$S_i(h)$と現金資産$C_i(h)$を用いて式(\ref{eq:model_asset})のように定義する．
+\begin{equation}
+    A_i(h) = p(h) S_i(h) + C_i(h) \label{eq:model_asset}
+\end{equation}
+
 
 
 \chapter{結果} \label{chap:results}
