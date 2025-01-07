@@ -92,7 +92,7 @@ captionpos=t
 \subsection{確率過程}
 確率過程$W = (W_t)_{t \geq 0}$が次の性質1～4を満たすとき，確率過程$W$を標準ブラウン運動，あるいはウィナー過程という\cite{stochastic_integration}．
 \begin{enumerate}
-    \item $W_0 = 0  a.s.$
+    \item $W_0 = 0 \quad a.s.$
     \item 各$0 \leq s \leq t$に対して，$W_t - W_s \sim \mathcal{N}(0, t - s)$
     \item 独立定常増分糧である.
     \item 確率1で連続なパスを持つ．
@@ -133,10 +133,10 @@ captionpos=t
 \section{Zero-intelligence trader}
 ?ZItraderの説明を入れる
 
-\subsection{Gode and Sunderモデル}
+\subsection{GSモデル}
 ZIトレーダーの1つにGodeとSunderによって提案されたモデルが存在する\cite{Gode_and_Sunder}．
-以降このモデルをGode and Sunderモデルとする．
-Gode and Sunderモデルは，市場規律による予算制約によって行動が制限されること\cite{market_displine}を用いて，ZIトレーダーに予算による制限を設けることで取引価格が均衡価格近傍に収束することや余剰をほぼ最大にするといった市場の特性を再現している．
+以降このモデルをGSモデルとする．
+GSモデルは，市場規律による予算制約によって行動が制限されること\cite{market_displine}を用いて，ZIトレーダーに予算による制限を設けることで取引価格が均衡価格近傍に収束することや余剰をほぼ最大にするといった市場の特性を再現している．
 
 はじめに各トレーダーには償却価値とコストが与えられ，$i$番目のトレーダーの償却価値を$v_i$,コストを$c_i$とする．
 償却価値$v_i$とコスト$c_i$は$[1, V_{max}]$の整数の一様乱数に従って生成される．
@@ -149,17 +149,17 @@ Gode and Sunderモデルは，市場規律による予算制約によって行�
 また，余剰についても需給曲線から求められる最大値の95 \%程度になっている．
 
 予算制約を設けない完全にランダムなトレーダーと人間にも同様の実験を行ったところ完全にランダムなトレーダーのみ取引価格が均衡価格近傍に収束せず，余剰も9割を越えなかった．
-そのため，Gode and Sunderモデルによってこれらの市場の特性が市場規律による予算制約によるものだと明らかにされている．
+そのため，GSモデルによってこれらの市場の特性が市場規律による予算制約によるものだと明らかにされている．
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=10cm]{fig/gode_sunder_trade.pdf}
-    \caption{Gode and Sunderモデルの需給曲線と取引価格．}
+    \caption{GSモデルの需給曲線と取引価格．}
     \label{fig:gode_sunder_trade}
 \end{figure}
 
 
 \subsection{Genoaモデル}
-Gode and Sunderモデルの他に，トレーダーの注文方法に制限を設け，更にクラスターを形成させることによって，ファット・テールとボラティリティ・クラスタリングを再現したモデルがある\cite{Genoa}．
+GSモデルの他に，トレーダーの注文方法に制限を設け，更にクラスターを形成させることによって，ファット・テールとボラティリティ・クラスタリングを再現したモデルがある\cite{Genoa}．
 以降，このモデルをGenoaモデルと呼ぶ．
 
 前提として，トレーダーは限られた資産を用いて単一株を取引する．
@@ -183,7 +183,7 @@ Gode and Sunderモデルの他に，トレーダーの注文方法に制限を�
     a_i^b = \left\lfloor \frac{r_i C_i(h)}{b_i} \right\rfloor \label{eq:Genoa_a_i^b}
 \end{equation}
 
-Gode and Sunderモデルと同様に全トレーダーの呼値を，売注文の場合は昇順に，買注文の場合は昇順に並べることで需給曲線が得られる．
+GSモデルと同様に全トレーダーの呼値を，売注文の場合は昇順に，買注文の場合は昇順に並べることで需給曲線が得られる．
 均衡価格$p^*(h)$は需要曲線と供給曲線の交点として，板寄せと同様の取引方法を用いて，均衡価格$p^*(h)$より安い売呼値と高い買呼値を全て価格$p^*(h)$で売買を成立させる．
 そのため
 \begin{equation}
@@ -206,10 +206,10 @@ Gode and Sunderモデルと同様に全トレーダーの呼値を，売注文�
 
 
 \chapter{手法} \label{chap:method}
-\section{Gode and Sunderモデルの解析}
-本研究では，はじめにGode and Sunderモデルのトレーダーの資産が幾何ブラウン運動に従っているか，LeBaronらによって作成されたGode and Sunderモデルのコード\cite{Gode_and_Sunder_code}をもとに解析をおこなった．
+\section{GSモデルの解析}
+本研究では，はじめにGSモデルのトレーダーの資産が幾何ブラウン運動に従っているか，LeBaronらによって作成されたGSモデルのコード\cite{Gode_and_Sunder_code}をもとに解析をおこなった．
 
-\subsection{Gode and Sunderモデルの設定}
+\subsection{GSモデルの設定}
 LeBaronらのコードでは取引期間が1期間のみであったため，取引期間$T$を新たに追加して，複数期間にわたって取引が行うことができるように変更した．
 また，トレーダーが1期間に売注文と買い注文を1回ずつの最大2回取引を行うことができたので，売注文か買注文のいずれかを最大1回のみ出すことができるように変更をおこなった．
 更に，各トレーダーに資産の項目を追加した．
@@ -226,7 +226,7 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
 
 \begin{table}[htbp]
     \begin{center}
-        \caption{Gode and Sunderモデルの解析で用いたパラメータ}
+        \caption{GSモデルの解析で用いたパラメータ}
         \begin{tabular}{lr}
             \hline\hline
             トレーダーの人数 $N$          & 2000 \\
@@ -240,28 +240,28 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
 
 以上のシミュレーションを，それぞれの期間において償却価値$v_i$とコスト$c_i$を変化させる場合と変化させない場合について資産分布と資産変動の解析をおこなった．
 
-\subsection{Gode and Sunderモデルの解析方法}
+\subsection{GSモデルの解析方法}
 トレーダーの資産分布と資産変動がファット・テールになっているか，相補累積分布関数を作成して標準正規乱数の相補累積分布関数と比較した．
 
 資産分布は，まずトレーダーの最終的な資産$A_1(T), A_2(T), ..., A_N(T)$について平均$\mu_A$と標準偏差$\sigma_A$を求め，式(\ref{eq:normalization})に従って標準化された資産$\tilde{A_1}, \tilde{A_2}, ..., \tilde{A_N}$を得た．
 \begin{equation}
     \tilde{A_i} = \frac{A_i(h) - \mu_A}{\sigma_A} \label{eq:normalization}
 \end{equation}
-次に，$N$個の標準正規乱数$Z_1, Z_2, ..., Z_n$を用意し，$\tilde{A_1}, \tilde{A_2}, ..., \tilde{A_N}$と$z_1, z_2, ..., z_n$に対して絶対値をとり，それぞれの相補累積分布関数の両対数グラフの比較をおこなった．
+次に，$N$個の標準正規乱数$Z_1, Z_2, ..., Z_n$を用意し，$\tilde{A_1}, \tilde{A_2}, ..., \tilde{A_N}$と$Z_1, Z_2, ..., Z_n$に対して絶対値をとり，それぞれの相補累積分布関数の両対数グラフの比較をおこなった．
 
-資産変動は，トレーダー$i$の資産$A_i(1), A_i(2), ...A_i(T)$について，取引を行われていない，つまり$A_i(h) = A_i(h + 1)$の場合は$A_i(h + 1)$を除外した新たな資産変動のリスト$A_i(1)', A_i(2)', ...A_i'(T')$を作成した．
-次に式(\ref{eq:asset_return})に従って資産の変動の割合$r_i(1), r_i(2), ..., r_i(T' - 1)$を求め，資産$A_1(T), A_2(T), ..., A_N(T)$と同様の手順で標準正規乱数との相補累積分布関数の両対数グラフの比較をおこなった．
+資産変動は，トレーダー$i$の資産$A_i(1), A_i(2), ...A_i(T)$について，取引を行われていない，つまり$A_i(h) = A_i(h + 1)$の場合は$A_i(h + 1)$を除外した新たな資産変動のリスト$A_i'(1), A_i'(2), ...A_i'(T')$を作成した．
+次に式(\ref{eq:asset_return})に従って資産の変動の割合$R_i(1), R_i(2), ..., R_i(T' - 1)$を求め，資産$A_1(T), A_2(T), ..., A_N(T)$と同様の手順で標準正規乱数との相補累積分布関数の両対数グラフの比較をおこなった．
 \begin{equation}
-    r_i(h) = \frac{A_i(h) - A_i(h - 1)}{A_i(h - 1)} \label{eq:asset_return}
+    R_i(h) = \frac{A_i(h)}{A_i(h - 1)} \label{eq:asset_return}
 \end{equation}
 
 ? 資産の分散の時間変化を調べたことを書く
 
 \section{Genoaモデルの導入}
-Gode and Sunderモデルの資産変動の分布がファット・テールを持つようにするために，Genoaモデルを参考に注文数や取引方法に変更を加える．
+GSモデルの資産変動の分布がファット・テールを持つようにするために，Genoaモデルを参考に注文数や取引方法に変更を加える．
 
-\subsection{Gode and Sunderモデルから変更しない点}
-Gode and Sunderモデル同様，各トレーダーには償却価値$v$とコスト$c$が与えた．
+\subsection{GSモデルから変更しない点}
+GSモデル同様，各トレーダーには償却価値$v$とコスト$c$が与えた．
 ただし，償却価値とコストは各期間ごとに与えられ，呼値の最大値を$V_{max}$とすると，期間$h$のトレーダー$i$の償却価値$v_i(h)$とコスト$c_i(h)$は式(\ref{eq:model_value}),(\ref{eq:model_cost})によって求められる．
 ここで，$r_i$，$r_i'$は$[0, 1]$の一様乱数とする．
 \begin{equation}
@@ -281,7 +281,7 @@ Gode and Sunderモデル同様，各トレーダーには償却価値$v$とコ�
 
 また，トレーダーは確率1/2で，売注文を確率1/2で買注文を出す．
 
-\subsection{Gode and Sunderモデルからの変更点}
+\subsection{GSモデルからの変更点}
 トレーダーが複数株注文できるようにするために，取引をGenoaモデルと同様の手順で
 (?いい感じの文章が浮かばないので後で取引方法をGenoaと同じにしたことを書く，p(h)の説明も)
 
@@ -300,16 +300,19 @@ Gode and Sunderモデル同様，各トレーダーには償却価値$v$とコ�
 
 $\alpha$を(? 相図を書くのに用いたalphaの値を書く)，$\beta$を(? 相図を書くのに用いたbetaの値を書く)と変化させて取引をおこない，資産変動とリターンの相補累積分布関数の図がどのように変化するのか調べた．
 
+式(\ref{eq:over_oder})のように注文価格の合計や注文株数が保有している量を上回る場合は，可能な限り取引をおこなうように，$n_i^s(h)$と$n_i^b(h)$を式(\ref{eq:changed_num_order})に変更した．
+\begin{equation}
+    S(h) < n_i^s(h), \quad C(h) < b_i(h) n_i^b(h) \label{eq:over_oder}
+\end{equation}
+\begin{equation}
+    n_i^s(h) = S(h), \quad n_i^b(h) = \left \lfloor \frac{C(h)}{b_i(h)} \right \rfloor \label{eq:changed_num_order}
+\end{equation}
 
 
-? 株数を決める式とその説明を入れる(資産と株数(多分)が負にならないようにしたことも)
-alphaとbeta(資産の何倍を使うか)を変えてシミュレーションをしたことを書く
-
-? 資産変動と価格の生存関数を求めたことを書く
 
 
 \chapter{結果} \label{chap:results}
-\section{Gode and Sunderモデルの特性}
+\section{GSモデルの特性}
 \subsection{? }
 ? 資産変動の相補累積分布関数の図から，ファット・テールを持たないことを書く
 ? 資産分布の相補累積分布関数の図から，ブラウン運動に従うことをいう
