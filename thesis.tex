@@ -80,13 +80,18 @@ captionpos=t
 
 \begin{figure}[htbp]
     \centering
+    \begin{picture}(14,185)
+        \put(40,170){(a)}
+    \end{picture}
     \includegraphics[width=0.49\linewidth]{fig/itayose.pdf}
     \hfil
+    \begin{picture}(14,185)
+        \put(0,170){(b)}
+    \end{picture}
     \includegraphics[width=0.335\linewidth]{fig/continuous.pdf}
     \caption{(a) 始値直前の板の状況．(b)始値直後の板の状況．}
     \label{fig:opening}
 \end{figure}
-? 図の上に(a)(b)をのせる
 
 \section{市場の性質}
 \subsection{確率過程}
@@ -109,10 +114,19 @@ captionpos=t
 \end{equation}
 
 \subsection{ボラティリティ・クラスタリング}
-? ボラティリティクラスタリングの説明を入れる
+リターン自体は無相関であるが，リターンの絶対値やその2乗はゆるやかに減衰する正の自己相関関数を示す\cite{Cont2007}．
+そのため，株価が大きく変化した後は大きな変動が続く傾向があり，小さく変動をした後には小さな変動が続く傾向がある\cite{return_correlation}．
+この性質のことをボラティリティ・クラスタリング(volatility clustering)という．
 
 \subsection{ファット・テール}
-図()で示すような，正規分布に比べて裾が厚く，べき乗測に従っている分布に対してファット・テールを持つという表現が用いられる(?参考文献を探す)．
+図(\ref{fig:fat_tail})で示すような，正規分布に比べて裾が厚く，べき乗測に従っている分布に対してファット・テールを持つという表現が用いられる(?参考文献を探す)．
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=10cm]{fig/fat_tail.drawio.pdf}
+    \caption{ファット・テール分布と正規分布}
+    \label{fig:fat_tail}
+\end{figure}
+
 (?ファットテールの図を挿入)
 
 べき分布の確率密度関数はある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
