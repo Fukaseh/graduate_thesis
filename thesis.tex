@@ -332,31 +332,44 @@ $\alpha$を(? 相図を書くのに用いたalphaの値を書く)，$\beta$を(?
 
 \chapter{結果} \label{chap:results}
 \section{GSモデルの特性}
-\subsection{?}
+\subsection{GSモデルの従う確率過程}
 トレーダーの資産変動の相補累積分布関数を図\ref{fig:GS_survivalD}(a)に，資産分布の相補累積分布関数を図\ref{fig:GS_survivalD}(b)に示す．
+図\ref{fig:GS_survivalD}(a)より，トレーダーの資産変動の分布はファット・テールを持たず，図\ref{fig:GS_survivalD}(b)よりトレーダーの資産分布は指数分布になっていることが確認された．
+そのため，GSモデルのトレーダーの資産は標準ブラウン運動に従っており，幾何ブラウン運動には従っていなかった．
 \begin{figure}[htbp]
     \centering
     \begin{picture}(14,130)
         \put(13,115){(a)}
     \end{picture}
-    \includegraphics[width=0.45\linewidth]{fig/assetD_GodeSundersur.pdf}
+    \includegraphics[width=0.45\linewidth]{fig/asset_GodeSundersur.pdf}
     \begin{picture}(14,130)
         \put(13,115){(b)}
     \end{picture}
-    \includegraphics[width=0.45\linewidth]{fig/asset_GodeSundersur.pdf}
-    \caption{GSモデルのトレーダーの資産の相補累積分布関数}
+    \includegraphics[width=0.45\linewidth]{fig/assetD_GodeSundersur.pdf}
+    \caption{GSモデルのトレーダーの(a)資産変動と(b)資産の相補累積分布関数}
     \label{fig:GS_survivalD}
 \end{figure}
 
-? 資産変動の相補累積分布関数の図から，ファット・テールを持たないことを書く
-? 資産分布の相補累積分布関数の図から，ブラウン運動に従うことをいう
-
-? 資産変動の相補累積分布関数を入れる
-? 資産分布の相補累積分布関数を入れる
-
 \subsection{?}
+GSモデルについて，償却価値などの価格戦略を期間ごとに変更した場合のトレーダーの資産の分散の時間変化を図\ref{fig:GS_variance}(a)に，価格戦略を固定した場合の分散の時間変化を図\ref{fig:GS_variance}(b)に示す．
+価格戦略を変更した場合は，グラフが直線的になっていることより分散は時間$t$に比例しており，diffusiveになっている．
+一方で価格戦略を固定した場合は，分散は$t^2$に比例し，ballisticになっている．
+\begin{figure}[htbp]
+    \centering
+    \begin{picture}(14,130)
+        \put(13,115){(a)}
+    \end{picture}
+    \includegraphics[width=0.45\linewidth]{fig/Var.pdf}
+    \begin{picture}(14,130)
+        \put(13,115){(b)}
+    \end{picture}
+    \includegraphics[width=0.45\linewidth]{fig/Var2.pdf}
+    \caption{(a)価格戦略を変更した場合の分散の時間変化, (b)価格戦略を固定した場合の分散の時間変化}
+    \label{fig:GS_variance}
+\end{figure}
+
+
 ? 価格戦略を変更したらdiffusiveに変更しなかったらballisticになったことを書く
-? 価格戦略を変更した場合としなかった場合の資産の分散の時間変化の図を載せる
 
 \section{?}
 ? 価格のリターンが正規分布と一致したことを書く
