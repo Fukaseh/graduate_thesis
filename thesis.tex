@@ -127,8 +127,6 @@ captionpos=t
     \label{fig:fat_tail}
 \end{figure}
 
-(?ファットテールの図を挿入)
-
 べき分布の確率密度関数はある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
 \begin{equation}
     f(x) = \frac{ab^a}{x^{a + 1}} \qquad (x > b) \label{eq:power_pdf}
@@ -142,7 +140,14 @@ captionpos=t
     \end{aligned}
 \end{equation}
 となることより，べき分布の相補累積分布関数は両対数グラフで直線となる．そのため，ファット・テールを持つ分布の相補累積分布関数は図()のように両対数グラフで一部直線を持つ．
-(?ファット・テールの相補累積分布関数の図を入れる)
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=10cm]{fig/fat_tail_survival.pdf}
+    \caption{ファット・テールと正規分布の相補累積分布関数\cite{Cont2007}}
+    \label{fig:fat_tail_survival}
+\end{figure}
+
 
 \section{Zero-intelligence trader}
 ?ZItraderの説明を入れる
@@ -327,7 +332,22 @@ $\alpha$を(? 相図を書くのに用いたalphaの値を書く)，$\beta$を(?
 
 \chapter{結果} \label{chap:results}
 \section{GSモデルの特性}
-\subsection{? }
+\subsection{?}
+トレーダーの資産変動の相補累積分布関数を図\ref{fig:GS_survivalD}(a)に，資産分布の相補累積分布関数を図\ref{fig:GS_survivalD}(b)に示す．
+\begin{figure}[htbp]
+    \centering
+    \begin{picture}(14,130)
+        \put(13,115){(a)}
+    \end{picture}
+    \includegraphics[width=0.45\linewidth]{fig/assetD_GodeSundersur.pdf}
+    \begin{picture}(14,130)
+        \put(13,115){(b)}
+    \end{picture}
+    \includegraphics[width=0.45\linewidth]{fig/asset_GodeSundersur.pdf}
+    \caption{GSモデルのトレーダーの資産の相補累積分布関数}
+    \label{fig:GS_survivalD}
+\end{figure}
+
 ? 資産変動の相補累積分布関数の図から，ファット・テールを持たないことを書く
 ? 資産分布の相補累積分布関数の図から，ブラウン運動に従うことをいう
 
