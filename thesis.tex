@@ -140,12 +140,12 @@ captionpos=t
 図(\ref{fig:fat_tail})で示すような，正規分布に比べて裾が厚く，べき乗測に従っている分布に対してファット・テールを持つという表現が用いられる\cite{fat-tailed}．
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=10cm]{fig/fat_tail.drawio.pdf}
+    \includegraphics[width=10cm]{fig/fat_tail.png}
     \caption{ファット・テール分布と正規分布}
     \label{fig:fat_tail}
 \end{figure}
 
-べき分布の確率密度関数はある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
+ファット・テール分布の一種であるパレート分布の確率密度関数はある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
 \begin{equation}
     f(x) = \frac{ab^a}{x^{a + 1}} \qquad (x > b) \label{eq:power_pdf}
 \end{equation}
@@ -157,7 +157,8 @@ captionpos=t
                     & = \frac{b^a}{x^a} \label{eq:survival}
     \end{aligned}
 \end{equation}
-となることより，べき分布の相補累積分布関数は両対数グラフで直線となる．そのため，ファット・テールを持つ分布の相補累積分布関数は図()のように両対数グラフで一部直線を持つ．
+となることより，パレート分布の相補累積分布関数は両対数グラフで直線となる．
+そのため，ファット・テールを持つ分布の相補累積分布関数は図\ref{fig:fat_tail_survival}のように両対数グラフで一部直線を持つ．
 
 \begin{figure}[htbp]
     \centering
@@ -320,8 +321,9 @@ GSモデル同様，各トレーダーには償却価値$v$とコスト$c$が与
 また，トレーダーは確率1/2で，売注文を確率1/2で買注文を出す．
 
 \subsection{GSモデルからの変更点}
-トレーダーが複数株注文できるようにするために，取引をGenoaモデルと同様の手順で
-(?いい感じの文章が浮かばないので後で取引方法をGenoaと同じにしたことを書く，p(h)の説明も)
+トレーダーが複数株注文できるようにするために，取引をGenoaモデルと同様の手順で取引をおこなうように変更した．
+具体的には，均衡価格$p^*(h)$より安い売呼値と高い買呼値を全て価格$p^*(h)$で売買を成立させ，同じ呼値同士は完全にランダムな優先順位で対当させた．
+そのため，式(\ref{eq:Genoa_price})が成り立つ．
 
 また，Genoaモデルの式(\ref{eq:Genoa_a_i^s})，(\ref{eq:Genoa_a_i^b})を参考に，複数株注文するように変更をおこなった．
 トレーダーに保有株数の項目を追加し，期間$h$におけるトレーダー$i$の総資産$A_i(h)$を，保有株数$S_i(h)$と現金資産$C_i(h)$を用いて式(\ref{eq:model_asset})のように定義する．
@@ -336,7 +338,7 @@ GSモデル同様，各トレーダーには償却価値$v$とコスト$c$が与
     n_i^b(h) = \frac{r_i' \beta C_i(h)}{p(h)} \label{eq:model_num_buy}
 \end{equation}
 
-$\alpha$を(? 相図を書くのに用いたalphaの値を書く)，$\beta$を(? 相図を書くのに用いたbetaの値を書く)と変化させて取引をおこない，資産変動とリターンの相補累積分布関数の図がどのように変化するのか調べた．
+$\alpha$を$0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27$，$\beta$を$0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9$と変化させて取引をおこない，資産変動とリターンの相補累積分布関数の図がどのように変化するのか調べた．
 
 式(\ref{eq:over_oder})のように注文価格の合計や注文株数が保有している量を上回る場合は，可能な限り取引をおこなうように，$n_i^s(h)$と$n_i^b(h)$を式(\ref{eq:changed_num_order})に変更した．
 \begin{equation}
@@ -387,9 +389,23 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
     \label{fig:GS_variance}
 \end{figure}
 
-\section{?}
-? 価格のリターンが正規分布と一致したことを書く
-? リターンの相補累積分布関数の図を載せる
+
+\section{モデル拡張後の各分布}
+\subsection{リターンの分布}
+リターンの相補累積分布関数の両対数グラフを図\ref{fig:model_return}に示す．
+リターンの分布はガウス分布と一致しており，ファット・テール分布になっていないことが読み取れる．
+そのため，トレーダが自身の資産に比例して注文を出すことは，リターンがファット・テール分布になる要因ではないことが分かった．
+
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm]{fig/return_survival.pdf}
+    \caption{リターンの相補累積分布関数．}
+    \label{fig:model_return}
+\end{figure}
+
+\subsection{資産の分布と資産変動の分布}
+
+
 ? 資産変動の相補累積分布関数が三種類にわかれたことを書く
 ? 三種類の図とその時のパラメータを書く
 ? 段になっている奴が期間数が変化しても段のままかどうか調べた図とその説明
