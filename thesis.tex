@@ -404,19 +404,31 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
 \end{figure}
 
 \subsection{資産の分布と資産変動の分布}
-資産の相補累積分布関数の例を図\ref{fig:model_asset_survival}に示す．三種類の分布が見られ，
+資産の相補累積分布関数の例を図\ref{fig:model_asset_survival}に示す．
+分布は，図\ref{fig:model_asset_survival}(a)のようにファット・テール分布になる場合と，(b)のように正規分布になる場合と，(c)のように段々になる場合の3種類に分かれた．
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\linewidth]{fig/asset_a012_b02.pdf}
-    \includegraphics[width=0.8\linewidth]{fig/asset_a003_b01.pdf}
-    \includegraphics[width=0.8\linewidth]{fig/asset_a05_b05.pdf}
-    \caption{資産の相補累積分布関数(a)ファット・テール分布, (b)正規分布，(c)段々になっている分布．}
+    \includegraphics[width=0.7\linewidth]{fig/asset_a012_b02.pdf}
+    \includegraphics[width=0.7\linewidth]{fig/asset_a003_b01.pdf}
+    \includegraphics[width=0.7\linewidth]{fig/asset_a05_b05.pdf}
+    \caption{資産の相補累積分布関数(a)$\aleph = 0.12, \beta = 0.2$, (b)$\aleph = 0.03, \beta = 0.1$，(c)$\aleph = 0.5, \beta = 0.5$．}
     \label{fig:model_asset_survival}
 \end{figure}
 
-? 資産変動の相補累積分布関数が三種類にわかれたことを書く
-? 三種類の図とその時のパラメータを書く
+資産変動の相補累積分布関数の例を図\ref{fig:model_asset_growth_survival}に示す．
+資産変動についても資産分布同様，3種類の分布に分かれた．
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\linewidth]{fig/asset_growth_a015_b03.pdf}
+    \includegraphics[width=0.7\linewidth]{fig/asset_growth_a003_b02.pdf}
+    \includegraphics[width=0.7\linewidth]{fig/asset_growth_a05_b05.pdf}
+    \caption{資産変動の相補累積分布関数(a)$\aleph = 0.15, \beta = 0.3$, (b)$\aleph = 0.03, \beta = 0.2$，(c)$\aleph = 0.5, \beta = 0.5$．}
+    \label{fig:model_asset_growth_survival}
+\end{figure}
+
+
 ? 段になっている奴が期間数が変化しても段のままかどうか調べた図とその説明
 
 ? 相図からパラメータがいくつのときにファット・テールになっているかを書く
