@@ -403,7 +403,7 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
     \label{fig:model_return}
 \end{figure}
 
-\subsection{資産の分布と資産変動の分布}
+\subsection{資産の分布と資産変動の分布}\label{chap:model_asset}
 資産の相補累積分布関数の例を図\ref{fig:model_asset_survival}に示す．
 分布は，図\ref{fig:model_asset_survival}(a)のようにファット・テール分布になる場合と，(b)のように正規分布になる場合と，(c)のように段々になる場合の3種類に分かれた．
 
@@ -455,65 +455,29 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
 \ref{chap:model}節の結果より，トレーダーが自身の資産に比例して注文を出す制約は，リターンがファット・テール分布になる直接的な要因ではないが資産分布や資産変動がファット・テール分布になる要因であることが分かった．
 そのため，リターンがファット・テール分布になる要因は，注文価格を式(\ref{eq:Genoa_buy})と式(\ref{eq:Genoa_sell})に従って決定していること，もしくはクラスターの形成方法のどちらかであると考えられる．
 
+\subsection{図\ref{fig:model_asset_survival}(c)の分布}\label{chap:step}
+\ref{chap:model_asset}節において図\ref{fig:model_asset_survival}(c)の分布のような，正規分布やファット・テール分布と異なる，段々になっている分布が得られた．
+この原因として，トレーダーが資産のほとんどを用いて取引を行うことにより，資産分布に偏りが生じていることが原因であると考えられる．
+実際$\alpha = 0.5, \beta = 0.5$におけるトレーダーの資産分布は図\ref{fig:hist_asset}のようになり，パレート分布と比較してもトレーダーの資産分布は偏っている．
+また，注文は資産に比例して出されるため，資産分布が偏っているとき，資産変動も偏った値をとると考えられる．
+非常に小さな値の資産や資産変動が大量に発生することにより，段のような分布が形成されると考えられる．
+
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm]{fig/hist.png}
+    \caption{$\alpha = 0.5, \beta = 0.5$における資産分布}
+    \label{fig:hist_asset}
+\end{figure}
+
+
 \subsection{$\alpha, \beta$のファット・テール分布の現れる範囲の違い}
 図\ref{fig:signal_asset}, \ref{fig:signal_asset_growth}においてファット・テール分布が現れる範囲の値が$\alpha$と比較して$\beta$の方が大きい．
 式(\ref{eq:model_asset})-(\ref{eq:model_num_buy})から，買注文の場合は現金資産$C_i(h)$に比例して注文をおこなうが，売注文では現金資産$C_i(h)$にリスク資産$S_i(h)$を加えた，総資産$A_i(h)$に比例して注文をおこなう．
-そのため，$\alpha$と$\beta$が等しい値の場合，売注文の方が取引数が多くなりやすく，トレーダーの分布が偏ると考えられる．
-実際$\alpha = 0.5, \beta = 0.5$におけるトレーダーの資産分布は図\のようになり，トレーダーの資産分布は偏っている．
-注文は資産に比例して出されるため，資産分布が偏っているとき，資産変動も偏った値をとると考えられる．
-$\beta$と比較して$\alpha$の値が小さいとき，トレーダーの売注文数と買注文数の比に偏りが生じない．
-そのため，ファット・テール分布が現れる条件の1つとして売注文と買注文に偏りが少ないことが考えられる．
+そのため，$\alpha$と$\beta$が等しい値の場合，売注文の方が注文数が多くなりやすく，図\ref{fig:hist_asset}のような分布になりやすく，相補累積分布関数がファット・テール分布ではなく，段々になっている分布になりやすいと考えられる．
+これは，図\ref{fig:signal_asset}, \ref{fig:signal_asset_growth}において，段々になっている分布が$\beta$のみの値が大きい場合は現れないが，$\alpha$の値が大きくなると$\beta$の値に関わらず現れるため，\ref{chap:step}節の考えと一致する．
 
 
-「はじめに」もしくは「緒言」では、研究背景、目的、そして論文の構成を書く。第一章の前に目次をつける場合、目次のページ番号はi, ii,とローマ数字にして、本文からアラビア数字にするのが一般的だ。それを実現するため、\verb|\begin{document}|の直後にページ番号をローマ数字にするコマンド\verb|\pagenumbering{roman}|が、最初の\verb|\chapter|の後にアラビア数字にするコマンド\verb|\pagenumbering{arabic}|が挿入されている。
 
-研究の背景を受けて、この研究分野は重要であるが、なんらかの不満点があることを述べる。その不満点は解決すべき問題であることを文献を引用しながら読者に納得させる。本研究の目的は、その不満点を解消することであることを述べ、その方法について簡単に述べる。
-
-論文の構成を説明する。まず本研究の目的を一行で書いてから、各章に何が書いてあるかを説明する。以下は例である。
-
-\begin{quotation}
-    本研究では、では、分野Aにおける手法Xの精度改善を行う。以下に本論文の構成を示す。第\ref{chap:introduction}章では、分野Aにおける手法の概観を紹介し、手法Xが広く用いられていることを示した。第\ref{chap:method}章では、本研究で用いる手法X、及びその改善手法であるX'について説明する。第\ref{chap:results}章では、本研究で提案した手法X'と、もととなった手法Xとの精度の比較を行う。第\ref{chap:summary}章では本研究で得られた知見を総括し、結論と今後の展望について述べる。
-\end{quotation}
-
-
-\section{図の入れ方}
-図は、数が多くなければとりえあずfigといったディレクトリにまとめて入れておくと良いだろう。数が増えてきて管理が難しくなったら節ごとにわけるなど工夫すること。画像ファイルは原則としてPDFにすること。例えば\verb|temperature.pdf|を入れたいなら、
-
-\begin{lstlisting}[language={[LaTeX]TeX}]
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
-    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
-    \caption{温度の時間発展。}
-    \label{fig:temperature}
-\end{figure}
-
-\end{lstlisting}
-
-とすると、以下のような図が得られる。
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
-    \includegraphics[width=0.49\linewidth]{fig/temperature.pdf}
-    \caption{温度の時間発展。}
-    \label{fig:temperature}
-\end{figure}
-
-この時、元データと、データからPDFを作るためのプロットファイルもしくはスクリプトファイルを一緒に入れておく。この時、画像ファイルとプロットファイルの名前を同じにしておくと良い。例えばgnuplotを使って\verb|temperature.pdf|という画像を作るなら、プロットファイルを\verb|temperature.plt|にしておく。すると、
-
-\begin{lstlisting}[language=bash]
-gnuplot temperature.plt
-\end{lstlisting}
-
-を実行することで\verb|temperature.pdf|ができるのでわかりやすい。
-
-また、名前を揃えておくとmakefileとの相性が良くなる。例えば\verb|pressure.pdf|、\verb|temperature.pdf|、\verb|error.pdf|の三つのファイルが、同名のpltファイルから作成されるなら
-
-\lstinputlisting[language=make]{fig/makefile}
-
-といったmakefileを作っておけば、make一発で三つのファイルを作ることができるので便利だ。
-
-もちろんPythonのMatplotlibを使っても良いが、いずれにせよ「データとスクリプトからコマンド一発で図のファイルが作成できる状況にしておく。
 
 考察は、「研究の背景」及び「目的」において提起した問題に正しく答えるようにする。得られた結果は満足すべきものだったか？不満があるならその理由はなにか？解決できそうなのか？また、「大きい理由」にも言及する。本研究によりどのような課題が見つかったかを書き、この分野における「研究の流れ」においてのような位置づけにあるかを説明した上で、今後、どのような発展の方向があるかについて書く。
 
