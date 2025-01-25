@@ -352,20 +352,16 @@ $\alpha$を$0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27$，$\beta$を$0
 \chapter{結果} \label{chap:results}
 \section{GSモデルの特性}\label{chap:result_GS}
 \subsection{GSモデルの従う確率過程}
-トレーダーの資産変動の相補累積分布関数を図\ref{fig:GS_survivalD}(a)に，資産分布の相補累積分布関数を図\ref{fig:GS_survivalD}(b)に示す．
+トレーダーの資産変動の相補累積分布関数を図\ref{fig:GS_survivalD}(a)に，資産分布の相補累積分布関数を図\ref{fig:GS_survivalD}(b)に，リターンの相補累積分布関数を図\ref{fig:GS_survivalD}(c)に示す．
 図\ref{fig:GS_survivalD}(a)より，トレーダーの資産変動の分布はファット・テールを持たず，図\ref{fig:GS_survivalD}(b)よりトレーダーの資産分布は指数分布になっていることが確認された．
 そのため，GSモデルのトレーダーの資産は標準ブラウン運動に従っており，幾何ブラウン運動には従っていなかった．
+同様にリターンの分布についてもファット・テールを持っておらず，市場規律は資産やリターンがファット・テール分布になる要因でないことが分かった．
 \begin{figure}[htbp]
     \centering
-    \begin{picture}(14,130)
-        \put(13,115){(a)}
-    \end{picture}
-    \includegraphics[width=0.45\linewidth]{fig/asset_GodeSundersur.pdf}
-    \begin{picture}(14,130)
-        \put(13,115){(b)}
-    \end{picture}
-    \includegraphics[width=0.45\linewidth]{fig/assetD_GodeSundersur.pdf}
-    \caption{GSモデルのトレーダーの(a)資産変動と(b)資産の相補累積分布関数}
+    \includegraphics[width=10cm]{fig/Brown/asset_growth_brown.pdf}
+    \includegraphics[width=10cm]{fig/Brown/asset_brown.pdf}
+    \includegraphics[width=10cm]{fig/Brown/price_brown.pdf}
+    \caption{GSモデルのトレーダーの(a)資産変動と(b)資産と(c)リターンの相補累積分布関数}
     \label{fig:GS_survivalD}
 \end{figure}
 
