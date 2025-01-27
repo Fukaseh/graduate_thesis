@@ -47,17 +47,13 @@ captionpos=t
 近年，人工市場の研究が多く行われている\cite{artificial_market1,artificial_market2,artificial_market3,artificial_market4}．
 これらの研究ではエージェントに学習能力と最適化能力を持たせることで，市場を再現している．
 しかしながら，こうした市場は仕組みが複雑になりすぎ，解析が困難であるという問題点を抱えている\cite{Genoa}．
-
 一方で，エージェントを簡単なルールベースのモデルで表現することで、実際の市場にみられるような現象を再現する試みもなされている\cite{zit1,zit2}．
-これらのエージェントはZero-intelligence trader(ZItrader)と呼ばれ，学習能力や最適化能力を持たない．
+これらのエージェントはZero-intelligence (ZI) traderと呼ばれ，学習能力や最適化能力を持たない．
 そのため，他の人工市場と比較して市場の特性が再現できた要因を特定することが容易となっている．
-
 例えば、GodeとSunderはトレーダーの注文価格の上限に対して市場規律に基づいた制約のみを課し，その他の条件はランダムに決定される市場モデルを作成し，シミュレーションをおこなった\cite{Gode_and_Sunder}．
 (以降，このモデルをGSモデルと呼ぶ．)
-シミュレーションの結果，トレーダーはランダムに注文をしているにもかかわらず，取引価格は均衡価格付近に収束し，余剰が9割を超えていたため，市場がこれらの特性を持つ要因は市場規律であることがZItraderによって明らかとなった．
-
-そのほか，Marcoらの市場モデルは，トレーダーの注文価格や注文株数，クラスターの形成方法に制約を課すことでリターンがファット・テール分布になることやボラティリティ・クラスタリングを再現している\cite{Genoa}．
-(以降このモデルをGenoaモデルとする．)
+シミュレーションの結果，トレーダーはランダムに注文をしているにもかかわらず，取引価格は均衡価格付近に収束し，余剰が9割を超えていたため，市場がこれらの特性を持つ要因は市場規律であることがZI traderによって明らかとなった．
+そのほか，Marcoらの市場モデル(Genoaモデル)は，トレーダーの注文価格や注文株数，クラスターの形成方法に制約を課すことでリターンがファット・テール分布になることやボラティリティ・クラスタリングを再現している\cite{Genoa}．
 
 \section{研究の目的}
 現実のトレーダーの資産分布はパレート分布になることが知られている\cite{Pareto}．
@@ -68,15 +64,15 @@ captionpos=t
 そのため，本研究ではまず，GSモデルに資産の概念を追加し，市場規律によって資産とその変動がファット・テール分布になるかを調べる．
 ファット・テール分布になっていない場合は，Genoaモデルを参考に，トレーダーが複数株注文をできるようにモデルを拡張し，資産分布や資産変動がファット・テール分布になる条件を明らかにすることを本研究の第一の目的とする．
 
-また，Genoaモデルは複数の市場特性を再現しているが，多くの制約を課しているため，各製薬がどの制約を再現しているのか明確に把握できていない．
+また，Genoaモデルは複数の市場特性を再現しているが，多くの制約を課しているため，各制約がどの制約を再現しているのか明確に把握できていない．
 そのため，Genoaモデルの制約の一部をGSモデルに課すことで，対応する特性を明らかにすることを第二の目的とする．
 
 
 \section{本論文の構成}
 本研究では，GSモデルを拡張し，資産分布と資産変動がファット・テール分布になる条件を調べる．
 以下に本論文の構成を示す．
-第1章ではZItraderの概要と例に加えて本研究の目的について述べた．
-第2章では現実の市場の仕組みとその特性について説明するとともに，ZItraderを用いた市場モデルの設定について解説する．
+第1章ではZI traderの概要と例に加えて本研究の目的について述べた．
+第2章では現実の市場の仕組みとその特性について説明するとともに，ZI traderを用いた市場モデルの設定について解説する．
 第3章ではGSモデルの解析方法と，Genoaモデルの導入するための手法について説明する．
 第4章では第3章で提案した手法による結果を述べ，第5章で得られた結果について考察するとともに本研究の結論と今後の展望について述べる．
 
@@ -91,7 +87,6 @@ captionpos=t
 
 \subsection{板寄せとザラ場方式}
 売買価格の決定方法には，始値や終値を定める場合に用いられる板寄せと，始値決定後の値段の決定に用いられるザラ場方式がある\cite{shokengaimuin}．
-
 板寄せは図\ref{fig:opening}~(a)で示すように，売注文も買い注文も成行注文を優先して対当させる．
 次に残りの成行注文と，指値注文を価格優先の原則に従って対当させていく．
 最後に同じ呼値同士を時間優先の原則に従って対当させることで，図\ref{fig:opening}~(b)のようになり，始値は最後に対当させた価格である100となる．
@@ -118,7 +113,7 @@ captionpos=t
 \begin{enumerate}
     \item $W_0 = 0 \quad a.s.$
     \item 各$0 \leq s \leq t$に対して，$W_t - W_s \sim \mathcal{N}(0, t - s)$
-    \item 独立定常増分糧である.
+    \item 独立定常増分量である.
     \item 確率1で連続なパスを持つ．
 \end{enumerate}
 
@@ -129,7 +124,7 @@ captionpos=t
 
 の解$S_t$は式(\ref{eq:geometric_Brown})で表され，この確率過程$S_t$を幾何ブラウン運動，$\sigma$をボラティリティという\cite{Stochastic_Calculus}．
 \begin{equation}
-    S_t = S_0 \exp{\left(\sigma W_t + \left( \mu - \frac{1}{2}\sigma^2 \right)t\right)} \label{eq:geometric_Brown}
+    S_t = S_0 \exp{\left(\sigma W_t + \left( \mu - \frac{1}{2}\sigma^2 \right)t\right)}. \label{eq:geometric_Brown}
 \end{equation}
 
 \subsection{ボラティリティ・クラスタリング}
@@ -145,10 +140,9 @@ captionpos=t
     \caption{ファット・テール分布と正規分布}
     \label{fig:fat_tail}
 \end{figure}
-
-ファット・テール分布の一種であるパレート分布の確率密度関数はある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
+ファット・テール分布の一種であるパレート分布の確率密度関数は，ある定数$a > 0,b > 0$を用いて式(\ref{eq:power_pdf})で表される\cite{PowerDistribution}．
 \begin{equation}
-    f(x) = \frac{ab^a}{x^{a + 1}} \qquad (x > b) \label{eq:power_pdf}
+    f(x) = \frac{ab^a}{x^{a + 1}} \qquad (x > b). \label{eq:power_pdf}
 \end{equation}
 よって相補累積分布関数$P(X \geq x)$は
 \begin{equation}
@@ -173,15 +167,15 @@ captionpos=t
 Zero-intelligence (ZI) traderは，人間と異なり利益追求や学習を行わず，最低限の制約のみに従ってランダムに取引を行うトレーダーである．\cite{Gode_and_Sunder}
 
 \subsection{GSモデル}
-ZIトレーダーの1つにGodeとSunderによって提案されたモデルが存在する\cite{Gode_and_Sunder}．
+ZI traderの1つにGodeとSunderによって提案されたモデルが存在する\cite{Gode_and_Sunder}．
 以降このモデルをGSモデルとする．
 GSモデルは，市場規律による予算制約によって行動が制限されること\cite{market_displine}を用いて，ZIトレーダーに予算による制限を設けることで取引価格が均衡価格近傍に収束することや余剰をほぼ最大にするといった市場の特性を再現している．
 
 はじめに各トレーダーには償却価値とコストが与えられ，$i$番目のトレーダーの償却価値を$v_i$,コストを$c_i$とする．
-償却価値$v_i$とコスト$c_i$は$[1, V_{max}]$の整数の一様乱数に従って生成される．
+償却価値$v_i$とコスト$c_i$は$[1, V_\mathrm{max}]$の整数の一様乱数に従って生成される．
 次に，ランダムなトレーダーを選び確率1/2で売注文を，確率1/2で買注文を出す．
-このとき，注文数は1株とし，呼値は売注文の場合は$[c_i, V_{max}]$で，買注文の場合は$[1, v_i]$でランダムとする．
-ただし，$V_{max}$は一株当たりの注文価格の上限とする．
+このとき，注文数は1株とし，呼値は売注文の場合は$[c_i, V_\mathrm{max}]$で，買注文の場合は$[1, v_i]$でランダムとする．
+ただし，$V_\mathrm{max}$は一株当たりの注文価格の上限とする．
 そしてこれまでの注文の記録と比較して，対当できるなら約定を成立させ，対当はできないが記録の中で最も取引が成立しやすい(売注文の場合は安く，買注文の場合は高い)価格である場合は新たにその価格を記録する．
 以上の操作を全員が取引を行うか十分に時間が経過するまで繰り返すと，約定価格は図\ref{fig:gode_sunder_trade}の黒線のように変化する．
 全トレーダーの呼値を，売注文の場合は昇順に，買注文の場合は昇順に並べることで図\ref{fig:gode_sunder_trade}の赤線と緑線のような需給曲線を引くことができ，約定価格が最終的に均衡価格近傍に収束している．
@@ -204,22 +198,22 @@ GSモデルの他に，トレーダーの注文方法に制限を設け，更に
 前提として，トレーダーは限られた資産を用いて単一株を取引する．
 また，トレーダーの人数を$N$人として，ステップ$h$における$i$番目のトレーダ－の全資産を$A_i(h)$，現金資産を$C_i(h)$，株価を$p(h)$とする．このとき，ステップ$h + 1$におけるトレーダー$i$の売呼値$s_i(h + 1)$を式(\ref{eq:Genoa_sell})，買呼値$b_i(h + 1)$を式(\ref{eq:Genoa_buy})で決定する．
 \begin{equation}
-    s_i(h + 1) = \frac{p(h)}{\mathcal{N}(\mu, \sigma_i)} \label{eq:Genoa_sell}
+    s_i(h + 1) = \frac{p(h)}{\mathcal{N}(\mu, \sigma_i)}, \label{eq:Genoa_sell}
 \end{equation}
 \begin{equation}
-    b_i(h + 1) = p(h) \mathcal{N}(\mu, \sigma_i) \label{eq:Genoa_buy}
+    b_i(h + 1) = p(h) \mathcal{N}(\mu, \sigma_i). \label{eq:Genoa_buy}
 \end{equation}
 ただし，$\mathcal{N}(\mu, \sigma_i)$は平均$\mu = 1.01$，標準偏差$\sigma_i$のガウス分布から生成される乱数で，$\sigma_i$は定数$k = 3.5$,時間窓数$T_i = 20$，過去$T_i$間におけるボラティリティ$\sigma(T_i)$を用いて式(\ref{eq:Genoa_sigma_i})で定義される．
 \begin{equation}
-    \sigma_i = k \sigma(T_i) \label{eq:Genoa_sigma_i}
+    \sigma_i = k \sigma(T_i). \label{eq:Genoa_sigma_i}
 \end{equation}
 
 また，ステップ$h + 1$におけるトレーダー$i$の売注文の株数$a_i^s$を式(\ref{eq:Genoa_a_i^s})，買注文の株数$b_i^s$を式(\ref{eq:Genoa_a_i^b})に従って決定する．ただし，$r_i$は$[0, 1]$の一様乱数である．
 \begin{equation}
-    a_i^s = \lfloor r_i A_i(h) \rfloor \label{eq:Genoa_a_i^s}
+    a_i^s = \lfloor r_i A_i(h) \rfloor, \label{eq:Genoa_a_i^s}
 \end{equation}
 \begin{equation}
-    a_i^b = \left\lfloor \frac{r_i C_i(h)}{b_i} \right\rfloor \label{eq:Genoa_a_i^b}
+    a_i^b = \left\lfloor \frac{r_i C_i(h)}{b_i} \right\rfloor. \label{eq:Genoa_a_i^b}
 \end{equation}
 
 GSモデルと同様に全トレーダーの呼値を，売注文の場合は昇順に，買注文の場合は昇順に並べることで需給曲線が得られる．
@@ -251,10 +245,10 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
 更に，各トレーダーに資産の項目を追加した．
 トレーダーの人数を$N$人として，期間$h$における$i$番目のトレーダーの資産を$A_i(h)$，取引価格を$p(h)$で表し，売注文が成立した場合は式(\ref{eq:Gode_asset_sell})，買い注文が成立した場合は式(\ref{eq:Gode_asset_buy})のように資産を変動させた．
 \begin{equation}
-    A_i(h + 1) = A_i(h) + p(h) \label{eq:Gode_asset_sell}
+    A_i(h + 1) = A_i(h) + p(h), \label{eq:Gode_asset_sell}
 \end{equation}
 \begin{equation}
-    A_i(h + 1) = A_i(h) - p(h) \label{eq:Gode_asset_buy}
+    A_i(h + 1) = A_i(h) - p(h). \label{eq:Gode_asset_buy}
 \end{equation}
 このとき，$A_i(h + 1)$が負の値をとることを許した．
 
@@ -267,7 +261,7 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
             \hline\hline
             トレーダーの人数 $N$          & 2000 \\
             期間 $T$                      & 100  \\
-            呼値の上限 $V_{max} $         & 25   \\
+            呼値の上限 $V_\mathrm{max} $  & 25   \\
             トレーダーの初期資産 $A_i(0)$ & 500  \\ \hline
             \label{tbl:Gode_param}
         \end{tabular}
@@ -281,7 +275,7 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
 
 資産分布は，まずトレーダーの最終的な資産$A_1(T), A_2(T), ..., A_N(T)$について平均$\mu_A$と標準偏差$\sigma_A$を求め，式(\ref{eq:normalization})に従って標準化された資産$\tilde{A_1}, \tilde{A_2}, ..., \tilde{A_N}$を得た．
 \begin{equation}
-    \tilde{A_i} = \frac{A_i(h) - \mu_A}{\sigma_A} \label{eq:normalization}
+    \tilde{A_i} = \frac{A_i(h) - \mu_A}{\sigma_A}. \label{eq:normalization}
 \end{equation}
 次に，$N$個の標準正規乱数$Z_1, Z_2, ..., Z_n$を用意し，$\tilde{A_1}, \tilde{A_2}, ..., \tilde{A_N}$と$Z_1, Z_2, ..., Z_n$に対して絶対値をとり，それぞれの相補累積分布関数の両対数グラフの比較をおこなった．
 
@@ -289,7 +283,7 @@ LeBaronらのコードでは取引期間が1期間のみであったため，取
 次に式(\ref{eq:asset_return})に従って資産の変動の割合$R_i(1), R_i(2), ..., R_i(T' - 1)$を求め，資産$A_1(T), A_2(T), ..., A_N(T)$と同様の手順で標準正規乱数との相補累積分布関数の両対数グラフの比較をおこなった．
 ただし，$T = 100$とし，各期間ごとにトレーダーの予算制約を変更した．
 \begin{equation}
-    R_i(h) = \frac{A_i(h)-A_i(h - 1)}{A_i(h - 1)} \label{eq:asset_return}
+    R_i(h) = \frac{A_i(h)-A_i(h - 1)}{A_i(h - 1)}. \label{eq:asset_return}
 \end{equation}
 
 次に，予算制約を変更することによって取引にどのような影響を及ぼすのか調べるために，100期間における分散の時間変化を，予算制約を変更する場合としない場合で比較した．
@@ -299,21 +293,21 @@ GSモデルの資産変動の分布がファット・テールを持つように
 
 \subsection{GSモデルから変更しない点}
 GSモデル同様，各トレーダーには償却価値$v$とコスト$c$が与えた．
-ただし，償却価値とコストは各期間ごとに与えられ，呼値の最大値を$V_{max}$とすると，期間$h$のトレーダー$i$の償却価値$v_i(h)$とコスト$c_i(h)$は式(\ref{eq:model_value}),(\ref{eq:model_cost})によって求められる．
+ただし，償却価値とコストは各期間ごとに与えられ，呼値の最大値を$V_\mathrm{max}$とすると，期間$h$のトレーダー$i$の償却価値$v_i(h)$とコスト$c_i(h)$は式(\ref{eq:model_value}),(\ref{eq:model_cost})によって求められる．
 ここで，$r_i$，$r_i'$は$[0, 1]$の一様乱数とする．
 \begin{equation}
-    v_i(h) = \lfloor r_i V_{max} \rfloor \label{eq:model_value}
+    v_i(h) = \lfloor r_i V_\mathrm{max} \rfloor, \label{eq:model_value}
 \end{equation}
 \begin{equation}
-    c_i(h) = \lfloor r_i' V_{max} \rfloor \label{eq:model_cost}
+    c_i(h) = \lfloor r_i' V_\mathrm{max} \rfloor. \label{eq:model_cost}
 \end{equation}
 トレーダー$i$の期間$h$における売呼値$s_i(h)$は式(\ref{eq:model_sell})で，買呼値$b_i(h)$は式(\ref{eq:model_buy})で決定した．
 ただし，$r_i$，$r_i'$は$[0, 1]$は式(\ref{eq:model_value}),(\ref{eq:model_cost})とは異なる値とする．
 \begin{equation}
-    s_i(h) = \lceil c_i + r_i' (V_{max} - c_i) \rceil \label{eq:model_sell}
+    s_i(h) = \lceil c_i + r_i' (V_\mathrm{max} - c_i), \rceil \label{eq:model_sell}
 \end{equation}
 \begin{equation}
-    b_i(h) = \lfloor v_i - r_i (v_i - 1) \rfloor \label{eq:model_buy}
+    b_i(h) = \lfloor v_i - r_i (v_i - 1) \rfloor. \label{eq:model_buy}
 \end{equation}
 
 また，トレーダーは確率1/2で，売注文を確率1/2で買注文を出す．
@@ -326,24 +320,24 @@ GSモデル同様，各トレーダーには償却価値$v$とコスト$c$が与
 また，Genoaモデルの式(\ref{eq:Genoa_a_i^s})，(\ref{eq:Genoa_a_i^b})を参考に，複数株注文するように変更をおこなった．
 トレーダーに保有株数の項目を追加し，期間$h$におけるトレーダー$i$の総資産$A_i(h)$を，保有株数$S_i(h)$と現金資産$C_i(h)$を用いて式(\ref{eq:model_asset})のように定義する．
 \begin{equation}
-    A_i(h) = p(h) S_i(h) + C_i(h) \label{eq:model_asset}
+    A_i(h) = p(h) S_i(h) + C_i(h). \label{eq:model_asset}
 \end{equation}
 総資産$A_i$と現金資産$C_i$を用いて，ステップ$h$におけるトレーダー$i$の売注文数$n_i^s(h)$を式(\ref{eq:model_num_sell})に，買注文数$n_i^b(h)$を式(\ref{eq:model_num_buy})に従って決定した．ただし，$r_i$，$r_i'$は$[0, 1]$の一様乱数，$\alpha, \beta$は$[0, 1]$の定数とし，資産の何倍を使って注文するかを表す．
 \begin{equation}
-    n_i^s(h) = \frac{r_i \alpha A_i(h)}{p(h)} \label{eq:model_num_sell}
+    n_i^s(h) = \frac{r_i \alpha A_i(h)}{p(h)}, \label{eq:model_num_sell}
 \end{equation}
 \begin{equation}
-    n_i^b(h) = \frac{r_i' \beta C_i(h)}{p(h)} \label{eq:model_num_buy}
+    n_i^b(h) = \frac{r_i' \beta C_i(h)}{p(h)}. \label{eq:model_num_buy}
 \end{equation}
 
 $\alpha$を$0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27$，$\beta$を$0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9$と変化させて取引をおこない，資産変動とリターンの相補累積分布関数の図がどのように変化するのか調べた．
 
 式(\ref{eq:over_oder})のように注文価格の合計や注文株数が保有している量を上回る場合は，可能な限り取引をおこなうように，$n_i^s(h)$と$n_i^b(h)$を式(\ref{eq:changed_num_order})に変更した．
 \begin{equation}
-    S(h) < n_i^s(h), \quad C(h) < b_i(h) n_i^b(h) \label{eq:over_oder}
+    S(h) < n_i^s(h), \quad C(h) < b_i(h) n_i^b(h), \label{eq:over_oder}
 \end{equation}
 \begin{equation}
-    n_i^s(h) = S(h), \quad n_i^b(h) = \left \lfloor \frac{C(h)}{b_i(h)} \right \rfloor \label{eq:changed_num_order}
+    n_i^s(h) = S(h), \quad n_i^b(h) = \left \lfloor \frac{C(h)}{b_i(h)} \right \rfloor. \label{eq:changed_num_order}
 \end{equation}
 
 
@@ -423,9 +417,9 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
 \end{figure}
 
 
-各$\aleph, \beta$における分布の種類の相図を，資産分布は図\ref{fig:signal_asset}に，資産変動は図\ref{fig:signal_asset_growth}に示す．
-図より，ファット・テール分布が現れやすい$\aleph, \beta$の範囲が存在し，資産分布の場合は$\alpha$が0.27以下，$\beta$が0.4以下，資産変動の場合は$\alpha$が0.06～0.27，$\beta$が0.2～0.5と読み取れる．
-また，いずれにおいても$\alpha$が0.3を超えると，$\beta$の値に関わらず，図\ref{fig:signal_asset}(c)で示すような段々になっている分布をとることが分かった．
+各$\alpha, \beta$における分布の種類の相図を，資産分布は図\ref{fig:signal_asset}に，資産変動は図\ref{fig:signal_asset_growth}に示す．
+図より，ファット・テール分布が現れやすい$\alpha, \beta$の範囲が存在し，資産分布の場合は$\alpha$が0.27以下，$\beta$が0.4以下，資産変動の場合は$\alpha$が0.06～0.27，$\beta$が0.2～0.5と読み取れる．
+また，いずれにおいても$\alpha$が0.3を超えると，$\beta$の値に関わらず，図\ref{fig:signal_asset}(c)で示すような非単調な振る舞いをとることが分かった．
 
 
 \begin{figure}
@@ -447,10 +441,10 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
 \section{考察}
 \subsection{Genoaモデルの特性の要因}
 \ref{chap:model}節の結果より，トレーダーが自身の資産に比例して注文を出す制約は，リターンがファット・テール分布になる直接的な要因ではないが資産分布や資産変動がファット・テール分布になる要因であることが分かった．
-そのため，リターンがファット・テール分布になる要因は，注文価格を式(\ref{eq:Genoa_buy})と式(\ref{eq:Genoa_sell})に従って決定していること，もしくはクラスターの形成方法のどちらかであると考えられる．
+そのため，リターンがファット・テール分布になる要因は，注文価格を，ボラティリティを変数に持つ正規乱数と株間の関数に従って決定していること，もしくはクラスターの形成方法のどちらかであると考えられる．
 
-\subsection{図\ref{fig:model_asset_survival}(c)の分布}\label{chap:step}
-\ref{chap:model_asset}節において図\ref{fig:model_asset_survival}(c)の分布のような，正規分布やファット・テール分布と異なる，段々になっている分布が得られた．
+\subsection{分布における非単調な振る舞い}\label{chap:step}
+\ref{chap:model_asset}節において図\ref{fig:model_asset_survival}(c)の分布のような，正規分布やファット・テール分布とは異なり、変曲点を複数持つような分布が得られた．
 この原因として，トレーダーが資産のほとんどを用いて取引を行うことにより，資産分布に偏りが生じていることが原因であると考えられる．
 実際$\alpha = 0.5, \beta = 0.5$におけるトレーダーの資産分布は図\ref{fig:hist_asset}のようになり，パレート分布と比較してもトレーダーの資産分布は偏っている．
 また，注文は資産に比例して出されるため，資産分布が偏っているとき，資産変動も偏った値をとると考えられる．
@@ -464,10 +458,10 @@ GSモデルについて，償却価値などの予算制約を期間ごとに変
 \end{figure}
 
 
-\subsection{$\alpha, \beta$のファット・テール分布の現れる範囲の違い}
+\subsection{売り制約と買い制約の変数依存性の違い}
 図\ref{fig:signal_asset}, \ref{fig:signal_asset_growth}においてファット・テール分布が現れる範囲の値が$\alpha$と比較して$\beta$の方が大きい．
 式(\ref{eq:model_asset})-(\ref{eq:model_num_buy})から，買注文の場合は現金資産$C_i(h)$に比例して注文をおこなうが，売注文では現金資産$C_i(h)$にリスク資産$S_i(h)$を加えた，総資産$A_i(h)$に比例して注文をおこなう．
-そのため，$\alpha$と$\beta$が等しい値の場合，売注文の方が注文数が多くなりやすく，図\ref{fig:hist_asset}のような分布になりやすく，相補累積分布関数がファット・テール分布ではなく，段々になっている分布になりやすいと考えられる．
+そのため，$\alpha$と$\beta$が等しい値の場合，売注文の方が注文数が多くなりやすく，図\ref{fig:hist_asset}のような分布になりやすく，相補累積分布関数がファット・テール分布ではなく，非単調な分布になりやすいと考えられる．
 これは，図\ref{fig:signal_asset}, \ref{fig:signal_asset_growth}において，段々になっている分布が$\beta$のみの値が大きい場合は現れないが，$\alpha$の値が大きくなると$\beta$の値に関わらず現れるため，\ref{chap:step}節の考えと一致する．
 
 \section{結論と今後の展望}
