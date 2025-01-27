@@ -234,7 +234,14 @@ GSモデルと同様に全トレーダーの呼値を，売注文の場合は昇
 また，各ステップで確率$P_c$で1つのクラスターをアクティブに，確率$1 - P_c$ですべてのクラスターをインアクティブにする．
 アクティブになったクラスターのトレーダーは，全員の出す注文の種類(売注文か買注文か)が同じになり，取引後にクラスターを消滅させる．
 
+\section{Binder cumulant}
+相転移や臨界現象の分野ではBender cumulantと呼ばれる値が重要な役割を果たす\cite{Binder_cumulant}．
+Binder cumulnatは式(\ref{eq:Binder})によって定義され, 正規乱数の場合は$U = 0$となる．
+そのため，本研究においてはBinder cumulantが0に近い値をとるかを，分布が正規分布であるかを見分ける指標として用いる．
 
+\begin{equation}
+    U = 1 - \frac{\langle m^4 \rangle}{(\langle m^2 \rangle)^2}. \label{eq:Binder}
+\end{equation}
 
 
 \chapter{手法} \label{chap:method}
