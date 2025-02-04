@@ -21,6 +21,6 @@ p 'asset_growth_a003_b01.dat' using 1:2 with line lw 4 lc rgb 'blue' title "asse
 unset label
 set output "price_brown.pdf"
 set label "(c)" at 1.5, 0.7
-p 'asset_growth_a003_b01.dat' using 1:2 with line lw 4 lc rgb 'blue' title "asset growth", \
-  'asset_growth_a003_b01.dat' using 3:4 with line lw 4 lc rgb 'red' title 'N(0, 1)'
+p 'price_a003_b01.dat' using 1:2 with line lw 4 lc rgb 'blue' title "price", \
+  'price_a003_b01.dat' using 3:4 with line lw 4 lc rgb 'red' title 'N(0, 1)'
 
